@@ -1,7 +1,7 @@
 ### Olá, sou a Anna Laura :)
 
 - Acadêmica de Engenharia da Computação no Cefet-MG
-- Atualmente estou no 3° período
+- Atualmente estou no 4° período
 
 <!--
 **annalaurams/annalaurams** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
