@@ -2,15 +2,16 @@
 
 - Acadêmica de Engenharia da Computação no Cefet-MG
 - Atualmente estou no 4° período
-
-<!--
-**annalaurams/annalaurams** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+- 
+##
 
 <div align="center">
   <a href="https://github.com/annalaurams">
   <img height="180cm" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=rose_pine&include_all_commits=true&count_private=true"/>
   <img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=rose_pine"/>  
 </div>
+
+##
 
 <div>
   <a href="https://instagram.com/annalaurasm" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
