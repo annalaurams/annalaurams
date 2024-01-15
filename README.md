@@ -1,13 +1,13 @@
 ### Olá, sou a Anna Laura :)
 
-- Acadêmica de Engenharia da Computação no Cefet-MG
-- Atualmente estou no 4° período
+- Acadêmica em Engenharia da Computação no Cefet-MG
+- Atualmente estou no 5° período
 
   ##
 
 <div align="center">
   <a href="https://github.com/annalaurams">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=aura_dark&include_all_commits=true&count_private=true"/>
+  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
   <img <img width="45%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=aura_dark"/>  
 </div>
 
