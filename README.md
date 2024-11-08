@@ -1,7 +1,7 @@
 ### Olá, sou a Anna Laura :)
 
 - Acadêmica em Engenharia da Computação no Cefet-MG
-- Atualmente estou no 5° período
+- Atualmente estou no 6° período
 
   ##
 
