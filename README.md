@@ -39,6 +39,14 @@
 
 ##
 
+<h3 style="color: white;">📜 Certificações</h3>
+
+- **GitHub Foundations** – Emitido por GitHub | Junho/2025  
+[GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url)
+
+
+##
+
 <h3 style="color: white;"> 📬 Contato </h3>
 <div>
   <a href = "mailto:nalauramoura@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
