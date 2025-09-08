@@ -1,7 +1,6 @@
 ### Olá, sou a Anna Laura
 
- 🔎 Estudante do 7° Período em Engenharia de Computação  
- 💻 Qualidade de Software (QA) | Programação Competitiva
+ 🔎 Estudante do 8° Período em Engenharia de Computação  
 
 ##
 
