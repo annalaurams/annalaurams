@@ -32,8 +32,9 @@
 
 <div align="center">
   <a href="https://github.com/annalaurams">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true"/>
-  <img <img width="45%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=github_dark"/>  
+    <img height="50%" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=default&include_all_commits=true&count_private=true#gh-light-mode-only"/>
+    <img height="50%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=default#gh-light-mode-only"/>
+  </a>
 </div>
 
 ##
