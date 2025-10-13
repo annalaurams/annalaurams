@@ -1,12 +1,29 @@
 ### Olá, sou a Anna Laura
 
- 🔎 Estudante do 8° Período em Engenharia de Computação  
+#### Seja bem-vindo(a) ao meu perfil!
+
+Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou focada em aprender mais sobre as áreas:
+
+💻 Desenvolvimento de Software
+
+🐧 Containers, Orquestração e Linux (Docker, Kubernetes)
+
+🤖 Inteligência Artificial e Automação
 
 ##
 
-<h3 style="color: white;">🖥️ Linguagens de Programação, Banco de Dados, Ferramentas e Frameworks </h3>
+<div align="center">
+  <a href="https://github.com/annalaurams">
+    <!-- Painéis de estatísticas -->
+    <img height="160em" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=default&include_all_commits=true&count_private=true#gh-light-mode-only"/>
+    <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=default#gh-light-mode-only"/>
+  </a>
+</div>
 
-<div style="display: flex; flex-wrap: wrap; gap: 8px; background-color: #1e1e1e; padding: 10px;">
+<br>
+<br>
+
+<div align="center" style="display: flex; flex-wrap: wrap; gap: 8px; background-color: #1e1e1e; padding: 10px; border-radius: 8px;">
   <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
   <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" /> 
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
@@ -17,37 +34,32 @@
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
- <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
   <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" />
+  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />
-</div>
-
-<!--   <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
-  <img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" />
-  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" /> -->
-##
-
-<div align="center">
-  <a href="https://github.com/annalaurams">
-    <img height="50%" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=default&include_all_commits=true&count_private=true#gh-light-mode-only"/>
-    <img height="50%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=default#gh-light-mode-only"/>
-  </a>
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
 </div>
 
 ##
 
-<h3 style="color: white;">📜 Certificações</h3>
 
-- **GitHub Foundations** – Emitido por GitHub | Junho/2025  
-[GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url)
+##
+
+<h3 style="color: white;"> Certificações</h3>
+
+- [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) – Emitido por GitHub | Junho/2025  
+
 
 
 ##
 
-<h3 style="color: white;"> 📬 Contato </h3>
+<h3 style="color: white;">  Contato </h3>
 <div>
   <a href = "mailto:nalauramoura@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
     <a href="https://www.linkedin.com/in/annalaurams" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
