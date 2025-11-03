@@ -10,18 +10,17 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 
 🤖 Inteligência Artificial e Automação
 
-##
-
 <div align="center">
   <a href="https://github.com/annalaurams">
-    <!-- Painéis de estatísticas -->
-    <img height="160em" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&theme=default&include_all_commits=true&count_private=true#gh-light-mode-only"/>
-    <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=default#gh-light-mode-only"/>
+    <img height="160" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true" />
+    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7" />
   </a>
 </div>
 
-<br>
-<br>
+<br/>
+
+<div align="center">
+
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 8px; background-color: #1e1e1e; padding: 10px; border-radius: 8px;">
 
