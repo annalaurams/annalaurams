@@ -19,8 +19,6 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 
 <br/>
 
-<div align="center">
-
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 8px; background-color: #1e1e1e; padding: 10px; border-radius: 8px;">
 
@@ -70,22 +68,15 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 </div>
 
 
-##
+### ✨ Certificações
 
+- [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) – Emitido por **GitHub** | Junho/2025  
 
-##
+---
 
-<h3 style="color: white;"> Certificações</h3>
+### 📞 Contato
 
-- [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) – Emitido por GitHub | Junho/2025  
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nalauramoura@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/annalaurams)
 
-
-
-##
-
-<h3 style="color: white;">  Contato </h3>
-<div>
-  <a href = "mailto:nalauramoura@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-    <a href="https://www.linkedin.com/in/annalaurams" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
-</div>
 
