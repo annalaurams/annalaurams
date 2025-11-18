@@ -6,9 +6,7 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 
 💻 Desenvolvimento de Software
 
-🐧 Containers, Orquestração e Linux (Docker, Kubernetes)
-
-🤖 Inteligência Artificial e Automação
+🤖 Inteligência Artificial 
 
 <div align="center">
   <a href="https://github.com/annalaurams">
