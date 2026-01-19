@@ -10,8 +10,8 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 
 <div align="center">
   <a href="https://github.com/annalaurams">
-    <img height="160" src="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true" />
-    <img height="160" src="https://github-readme-stats-git-masterorgs-github-readme-stats-team.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7" />
+    <img height="160" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=radical" />
+    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=radical" />
   </a>
 </div>
 
