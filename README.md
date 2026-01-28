@@ -2,16 +2,14 @@
 
 #### Seja bem-vindo(a) ao meu perfil!
 
-Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou focada em aprender mais sobre as áreas:
+Sou estudante do 9° período de Engenharia de Computação no CEFET-MG. Desenvolvo estudos e projetos de pesquisa principalmente na área de desenvolvimento de software, além de inteligência artificial e dados. 
 
-💻 Desenvolvimento de Software
-
-🤖 Inteligência Artificial 
+Atualmente, meus estudos estão focados em desenvolvimento de software e DevOps.
 
 <div align="center">
   <a href="https://github.com/annalaurams">
-    <img height="160" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=radical" />
-    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=radical" />
+    <img height="160" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy" />
+    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy" />
   </a>
 </div>
 
@@ -38,10 +36,14 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
   <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
   <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" />
 
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black" />
+
   <!-- DevOps e Infra -->
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
   
   <!-- Bibliotecas Python -->
   <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" />
@@ -55,7 +57,7 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
   <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" />
-
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" />
 
   <!-- Outros -->
   <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" />
@@ -65,13 +67,13 @@ Sou estudante de Engenharia de Computação no CEFET-MG e atualmente, estou foca
 </div>
 
 
-### ✨ Certificações
+### Certificações
 
 - [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) – Emitido por **GitHub** | Junho/2025  
 
 ---
 
-### 📞 Contato
+### Contato
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nalauramoura@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/annalaurams)
