@@ -2,7 +2,7 @@
 
 #### Seja bem-vindo(a) ao meu perfil!
 
-Sou estudante do 9° período de Engenharia de Computação no CEFET-MG. Desenvolvo estudos e projetos de pesquisa principalmente na área de desenvolvimento de software, além de inteligência artificial e dados. 
+Sou estudante do 9° período de Engenharia de Computação no Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG). Desenvolvo estudos e projetos de pesquisa principalmente na área de desenvolvimento de software, além de inteligência artificial e dados. 
 
 Atualmente, meus estudos estão focados em desenvolvimento de software e DevOps.
 
