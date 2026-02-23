@@ -11,30 +11,75 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
+      - name: Install dependencies
+        run: sudo apt-get install -y jq bc
 
       - name: Create assets folder
         run: mkdir -p assets
 
-      - name: Fetch GitHub Data and Languages
+      - name: Fetch GitHub Stats & Generate SVG
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -s https://api.github.com/users/annalaurams > user.json
-          REPOS=$(jq .public_repos user.json)
-          FOLLOWERS=$(jq .followers user.json)
-          FOLLOWING=$(jq .following user.json)
+          USERNAME="annalaurams"
 
-          curl -s https://api.github.com/users/annalaurams/repos?per_page=100 > repos.json
+          # ── Fetch user data ──────────────────────────────────────────────
+          curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/users/$USERNAME" > user.json
+
+          REPOS=$(jq '.public_repos' user.json)
+          FOLLOWERS=$(jq '.followers' user.json)
+          FOLLOWING=$(jq '.following' user.json)
+
+          # ── Fetch commit/PR/issue/star stats via GraphQL ─────────────────
+          GRAPHQL_QUERY=$(cat <<'GRAPHQL'
+          {
+            "query": "query($login: String!) { user(login: $login) { repositories(first: 100, ownerAffiliations: OWNER) { nodes { stargazerCount } } contributionsCollection { totalCommitContributions totalPullRequestContributions totalIssueContributions } repositoriesContributedTo(first: 1) { totalCount } } }",
+            "variables": { "login": "annalaurams" }
+          }
+          GRAPHQL
+          )
+
+          curl -s -H "Authorization: bearer $GH_TOKEN" \
+               -H "Content-Type: application/json" \
+               -X POST \
+               -d "$GRAPHQL_QUERY" \
+               https://api.github.com/graphql > graphql.json
+
+          STARS=$(jq '[.data.user.repositories.nodes[].stargazerCount] | add // 0' graphql.json)
+          COMMITS=$(jq '.data.user.contributionsCollection.totalCommitContributions // 0' graphql.json)
+          PRS=$(jq '.data.user.contributionsCollection.totalPullRequestContributions // 0' graphql.json)
+          ISSUES=$(jq '.data.user.contributionsCollection.totalIssueContributions // 0' graphql.json)
+          CONTRIB=$(jq '.data.user.repositoriesContributedTo.totalCount // 0' graphql.json)
+
+          # Format commits (e.g. 9200 -> 9.2k)
+          format_number() {
+            local n=$1
+            if [ "$n" -ge 1000 ]; then
+              echo "$(echo "scale=1; $n / 1000" | bc)k"
+            else
+              echo "$n"
+            fi
+          }
+
+          STARS_FMT=$(format_number $STARS)
+          COMMITS_FMT=$(format_number $COMMITS)
+          PRS_FMT=$(format_number $PRS)
+          ISSUES_FMT=$ISSUES
+          CONTRIB_FMT=$CONTRIB
+
+          # ── Fetch language data ──────────────────────────────────────────
+          curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/users/$USERNAME/repos?per_page=100" > repos.json
 
           echo '{}' > languages_total.json
 
           for row in $(jq -r '.[].languages_url' repos.json); do
-            curl -s $row > lang.json
+            curl -s -H "Authorization: token $GH_TOKEN" "$row" > lang.json
             for key in $(jq -r 'keys[]' lang.json); do
               VALUE=$(jq -r --arg k "$key" '.[$k]' lang.json)
               CURRENT=$(jq -r --arg k "$key" '.[$k] // 0' languages_total.json)
@@ -43,60 +88,161 @@ jobs:
             done
           done
 
-          TOTAL_BYTES=$(jq '[.[]] | add' languages_total.json)
+          TOTAL_BYTES=$(jq '[.[]] | add // 1' languages_total.json)
 
-          TOP_LANGS=$(jq -r 'to_entries | sort_by(-.value) | .[:3]' languages_total.json)
+          # Get top 5 languages
+          TOP_LANGS=$(jq -r 'to_entries | sort_by(-.value) | .[:5]' languages_total.json)
 
-          LANG1=$(echo $TOP_LANGS | jq -r '.[0].key')
-          LANG1_VAL=$(echo $TOP_LANGS | jq -r '.[0].value')
-          LANG2=$(echo $TOP_LANGS | jq -r '.[1].key')
-          LANG2_VAL=$(echo $TOP_LANGS | jq -r '.[1].value')
-          LANG3=$(echo $TOP_LANGS | jq -r '.[2].key')
-          LANG3_VAL=$(echo $TOP_LANGS | jq -r '.[2].value')
+          get_lang()  { echo $TOP_LANGS | jq -r ".[$1].key // \"N/A\""; }
+          get_pct()   {
+            VAL=$(echo $TOP_LANGS | jq -r ".[$1].value // 0")
+            echo "scale=2; $VAL * 100 / $TOTAL_BYTES" | bc
+          }
+          get_width() {
+            VAL=$(echo $TOP_LANGS | jq -r ".[$1].value // 0")
+            echo "$((VAL * 540 / TOTAL_BYTES))"
+          }
 
-          P1=$((LANG1_VAL * 600 / TOTAL_BYTES))
-          P2=$((LANG2_VAL * 600 / TOTAL_BYTES))
-          P3=$((LANG3_VAL * 600 / TOTAL_BYTES))
+          LANG1=$(get_lang 0); PCT1=$(get_pct 0); W1=$(get_width 0)
+          LANG2=$(get_lang 1); PCT2=$(get_pct 1); W2=$(get_width 1)
+          LANG3=$(get_lang 2); PCT3=$(get_pct 2); W3=$(get_width 2)
+          LANG4=$(get_lang 3); PCT4=$(get_pct 3); W4=$(get_width 3)
+          LANG5=$(get_lang 4); PCT5=$(get_pct 4); W5=$(get_width 4)
 
-          cat <<EOF > assets/stats.svg
-            <svg width="800" height="420" xmlns="http://www.w3.org/2000/svg">
+          # Offset positions for stacked bar
+          X2=$((W1))
+          X3=$((W1 + W2))
+          X4=$((W1 + W2 + W3))
+          X5=$((W1 + W2 + W3 + W4))
+
+          # ── Generate SVG ─────────────────────────────────────────────────
+          cat > assets/stats.svg << SVGEOF
+          <svg width="600" height="420" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
               <style>
-                .title { font: bold 32px Arial; fill: #ff4d8d; }
-                .label { font: 20px Arial; fill: #a8f0e6; }
-                .value { font: bold 20px Arial; fill: #ffffff; }
+                @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@400;600;700&amp;display=swap');
+                text { font-family: 'Space Mono', monospace; }
               </style>
+              <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff2d78;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00e5ff;stop-opacity:1" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="softglow">
+                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <clipPath id="barClip">
+                <rect x="30" y="290" width="540" height="18" rx="9"/>
+              </clipPath>
+            </defs>
 
-              <rect width="100%" height="100%" rx="20" fill="#0f172a"/>
+            <!-- Background -->
+            <rect width="600" height="420" rx="16" fill="url(#cardBg)"/>
 
-              <text x="40" y="70" class="title">Anna Laura's GitHub Stats</text>
+            <!-- Animated border -->
+            <rect x="1" y="1" width="598" height="418" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" opacity="0.7"/>
 
-              <text x="40" y="130" class="label">Public Repositories:</text>
-              <text x="360" y="130" class="value">$REPOS</text>
+            <!-- ══ STATS SECTION ══ -->
+            <!-- Section label -->
+            <text x="30" y="38" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">GITHUB STATS</text>
+            <text x="30" y="58" font-size="20" fill="#ffffff" font-weight="700" letter-spacing="1">annalaurams</text>
 
-              <text x="40" y="170" class="label">Followers:</text>
-              <text x="360" y="170" class="value">$FOLLOWERS</text>
+            <!-- Divider line -->
+            <line x1="30" y1="70" x2="570" y2="70" stroke="#30363d" stroke-width="0.8"/>
 
-              <text x="40" y="210" class="label">Following:</text>
-              <text x="360" y="210" class="value">$FOLLOWING</text>
+            <!-- Stat rows -->
+            <!-- Stars -->
+            <text x="52" y="101" font-size="17" fill="#f0c040">★</text>
+            <text x="72" y="101" font-size="13" fill="#8b949e" font-weight="400">Total Stars Earned</text>
+            <text x="380" y="101" font-size="14" fill="#e6edf3" font-weight="700">$STARS_FMT</text>
 
-              <text x="40" y="270" class="title" font-size="26">Most Used Languages</text>
+            <!-- Commits -->
+            <text x="48" y="131" font-size="14" fill="#00e5ff">⏱</text>
+            <text x="72" y="131" font-size="13" fill="#8b949e">Total Commits</text>
+            <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">$COMMITS_FMT</text>
 
-              <rect x="40" y="300" width="600" height="25" rx="12" fill="#1e293b"/>
+            <!-- PRs -->
+            <text x="48" y="161" font-size="14" fill="#a855f7">⑂</text>
+            <text x="72" y="161" font-size="13" fill="#8b949e">Total PRs</text>
+            <text x="380" y="161" font-size="14" fill="#e6edf3" font-weight="700">$PRS_FMT</text>
 
-              <rect x="40" y="300" width="$P1" height="25" rx="12" fill="#f1e05a"/>
-              <rect x="$((40 + P1))" y="300" width="$P2" height="25" fill="#b07219"/>
-              <rect x="$((40 + P1 + P2))" y="300" width="$P3" height="25" rx="12" fill="#3178c6"/>
+            <!-- Issues -->
+            <text x="49" y="191" font-size="14" fill="#ff7043">⚠</text>
+            <text x="72" y="191" font-size="13" fill="#8b949e">Total Issues</text>
+            <text x="380" y="191" font-size="14" fill="#e6edf3" font-weight="700">$ISSUES_FMT</text>
 
-              <text x="40" y="350" class="label">$LANG1</text>
-              <text x="240" y="350" class="label">$LANG2</text>
-              <text x="440" y="350" class="label">$LANG3</text>
-            </svg>
-            EOF
+            <!-- Contributed to -->
+            <text x="48" y="221" font-size="14" fill="#4ade80">⬡</text>
+            <text x="72" y="221" font-size="13" fill="#8b949e">Contributed to</text>
+            <text x="380" y="221" font-size="14" fill="#e6edf3" font-weight="700">$CONTRIB_FMT repos</text>
+
+            <!-- Rank circle -->
+            <circle cx="520" cy="150" r="52" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+            <circle cx="520" cy="150" r="52" fill="none" stroke="#ff2d78" stroke-width="4"
+                    stroke-dasharray="250 80" stroke-linecap="round"
+                    transform="rotate(-90 520 150)" opacity="0.9" filter="url(#glow)"/>
+            <text x="520" y="144" text-anchor="middle" font-size="22" fill="#ffffff" font-weight="700">S+</text>
+            <text x="520" y="162" text-anchor="middle" font-size="9" fill="#8b949e" letter-spacing="1">RANK</text>
+
+            <!-- ══ DIVIDER ══ -->
+            <line x1="0" y1="245" x2="600" y2="245" stroke="#21262d" stroke-width="1.5"/>
+
+            <!-- ══ LANGUAGES SECTION ══ -->
+            <text x="30" y="272" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">MOST USED LANGUAGES</text>
+
+            <!-- Stacked language bar -->
+            <rect x="30" y="283" width="540" height="18" rx="9" fill="#21262d"/>
+            <g clip-path="url(#barClip)">
+              <rect x="30" y="283" width="$W1" height="18" fill="#f0c040"/>
+              <rect x="$((30 + X2))" y="283" width="$W2" height="18" fill="#e07b39"/>
+              <rect x="$((30 + X3))" y="283" width="$W3" height="18" fill="#3b82f6"/>
+              <rect x="$((30 + X4))" y="283" width="$W4" height="18" fill="#8b5cf6"/>
+              <rect x="$((30 + X5))" y="283" width="$W5" height="18" fill="#ef4444"/>
+            </g>
+
+            <!-- Language legend row 1 -->
+            <circle cx="42" cy="326" r="6" fill="#f0c040"/>
+            <text x="54" y="331" font-size="12" fill="#c9d1d9">$LANG1</text>
+            <text x="54" y="345" font-size="10" fill="#8b949e">$PCT1%</text>
+
+            <circle cx="182" cy="326" r="6" fill="#e07b39"/>
+            <text x="194" y="331" font-size="12" fill="#c9d1d9">$LANG2</text>
+            <text x="194" y="345" font-size="10" fill="#8b949e">$PCT2%</text>
+
+            <circle cx="322" cy="326" r="6" fill="#3b82f6"/>
+            <text x="334" y="331" font-size="12" fill="#c9d1d9">$LANG3</text>
+            <text x="334" y="345" font-size="10" fill="#8b949e">$PCT3%</text>
+
+            <circle cx="462" cy="326" r="6" fill="#8b5cf6"/>
+            <text x="474" y="331" font-size="12" fill="#c9d1d9">$LANG4</text>
+            <text x="474" y="345" font-size="10" fill="#8b949e">$PCT4%</text>
+
+            <!-- Language legend row 2 -->
+            <circle cx="42" cy="370" r="6" fill="#ef4444"/>
+            <text x="54" y="375" font-size="12" fill="#c9d1d9">$LANG5</text>
+            <text x="54" y="389" font-size="10" fill="#8b949e">$PCT5%</text>
+
+            <!-- Footer -->
+            <text x="570" y="410" text-anchor="end" font-size="9" fill="#30363d">Updated automatically · github-actions</text>
+          </svg>
+          SVGEOF
+
+          echo "SVG generated successfully!"
+          cat assets/stats.svg | head -5
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add assets/stats.svg
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore(ci): update custom stats"
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore(ci): update custom stats card"
           git push
