@@ -1,0 +1,30 @@
+name: Generate GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # roda todo dia às 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create assets folder
+        run: mkdir -p assets
+
+      - name: Download GitHub stats
+        run: |
+          curl -o assets/stats.svg "https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy"
+          curl -o assets/top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy"
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add assets/
+          git diff --quiet && git diff --staged --quiet || git commit -m "update stats"
+          git push
