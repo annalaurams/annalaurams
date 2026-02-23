@@ -6,7 +6,9 @@ Sou estudante do 9° período de Engenharia de Computação no Centro Federal de
 
 Atualmente, meus estudos estão focados em desenvolvimento de software e DevOps.
 
-![GitHub Stats](./assets/stats.svg)
+<div align="center">
+  <img src="./assets/stats.svg" alt="GitHub Stats" />
+</div>
 
 <br/>
 
