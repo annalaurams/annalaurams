@@ -18,9 +18,9 @@ jobs:
 
       - name: Download GitHub stats
         run: |
-          curl -o assets/stats.svg "https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy"
-          curl -o assets/top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy"
-
+          curl -f -L -o assets/stats.svg "https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy"
+          curl -f -L -o assets/top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy"
+      
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions"
