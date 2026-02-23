@@ -56,7 +56,7 @@ jobs:
           ISSUES=$(jq '.data.user.contributionsCollection.totalIssueContributions // 0' graphql.json)
           CONTRIB=$(jq '.data.user.repositoriesContributedTo.totalCount // 0' graphql.json)
 
-          # Format commits (e.g. 9200 -> 9.2k)
+          # Format numbers (e.g. 9200 -> 9.2k)
           format_number() {
             local n=$1
             if [ "$n" -ge 1000 ]; then
@@ -72,13 +72,14 @@ jobs:
           ISSUES_FMT=$ISSUES
           CONTRIB_FMT=$CONTRIB
 
-          # ── Fetch language data ──────────────────────────────────────────
+          # ── Fetch language data (excluindo forks) ────────────────────────
           curl -s -H "Authorization: token $GH_TOKEN" \
-            "https://api.github.com/users/$USERNAME/repos?per_page=100" > repos.json
+            "https://api.github.com/users/$USERNAME/repos?per_page=100&type=owner" > repos.json
 
           echo '{}' > languages_total.json
 
-          for row in $(jq -r '.[].languages_url' repos.json); do
+          # select(.fork == false) garante que forks sejam ignorados
+          for row in $(jq -r '.[] | select(.fork == false) | .languages_url' repos.json); do
             curl -s -H "Authorization: token $GH_TOKEN" "$row" > lang.json
             for key in $(jq -r 'keys[]' lang.json); do
               VALUE=$(jq -r --arg k "$key" '.[$k]' lang.json)
@@ -140,47 +141,44 @@ jobs:
                 <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
               <clipPath id="barClip">
-                <rect x="30" y="290" width="540" height="18" rx="9"/>
+                <rect x="30" y="283" width="540" height="18" rx="9"/>
               </clipPath>
             </defs>
 
             <!-- Background -->
             <rect width="600" height="420" rx="16" fill="url(#cardBg)"/>
 
-            <!-- Animated border -->
+            <!-- Border -->
             <rect x="1" y="1" width="598" height="418" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" opacity="0.7"/>
 
-            <!-- ══ STATS SECTION ══ -->
-            <!-- Section label -->
+            <!-- STATS SECTION -->
             <text x="30" y="38" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">GITHUB STATS</text>
             <text x="30" y="58" font-size="20" fill="#ffffff" font-weight="700" letter-spacing="1">annalaurams</text>
 
-            <!-- Divider line -->
             <line x1="30" y1="70" x2="570" y2="70" stroke="#30363d" stroke-width="0.8"/>
 
-            <!-- Stat rows -->
             <!-- Stars -->
-            <text x="52" y="101" font-size="17" fill="#f0c040">★</text>
-            <text x="72" y="101" font-size="13" fill="#8b949e" font-weight="400">Total Stars Earned</text>
+            <text x="52" y="101" font-size="17" fill="#f0c040">&#9733;</text>
+            <text x="72" y="101" font-size="13" fill="#8b949e">Total Stars Earned</text>
             <text x="380" y="101" font-size="14" fill="#e6edf3" font-weight="700">$STARS_FMT</text>
 
             <!-- Commits -->
-            <text x="48" y="131" font-size="14" fill="#00e5ff">⏱</text>
+            <text x="48" y="131" font-size="13" fill="#00e5ff">&#9201;</text>
             <text x="72" y="131" font-size="13" fill="#8b949e">Total Commits</text>
             <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">$COMMITS_FMT</text>
 
             <!-- PRs -->
-            <text x="48" y="161" font-size="14" fill="#a855f7">⑂</text>
+            <text x="48" y="161" font-size="13" fill="#a855f7">&#8487;</text>
             <text x="72" y="161" font-size="13" fill="#8b949e">Total PRs</text>
             <text x="380" y="161" font-size="14" fill="#e6edf3" font-weight="700">$PRS_FMT</text>
 
             <!-- Issues -->
-            <text x="49" y="191" font-size="14" fill="#ff7043">⚠</text>
+            <text x="49" y="191" font-size="13" fill="#ff7043">&#9888;</text>
             <text x="72" y="191" font-size="13" fill="#8b949e">Total Issues</text>
             <text x="380" y="191" font-size="14" fill="#e6edf3" font-weight="700">$ISSUES_FMT</text>
 
             <!-- Contributed to -->
-            <text x="48" y="221" font-size="14" fill="#4ade80">⬡</text>
+            <text x="48" y="221" font-size="13" fill="#4ade80">&#11042;</text>
             <text x="72" y="221" font-size="13" fill="#8b949e">Contributed to</text>
             <text x="380" y="221" font-size="14" fill="#e6edf3" font-weight="700">$CONTRIB_FMT repos</text>
 
@@ -192,10 +190,10 @@ jobs:
             <text x="520" y="144" text-anchor="middle" font-size="22" fill="#ffffff" font-weight="700">S+</text>
             <text x="520" y="162" text-anchor="middle" font-size="9" fill="#8b949e" letter-spacing="1">RANK</text>
 
-            <!-- ══ DIVIDER ══ -->
+            <!-- DIVIDER -->
             <line x1="0" y1="245" x2="600" y2="245" stroke="#21262d" stroke-width="1.5"/>
 
-            <!-- ══ LANGUAGES SECTION ══ -->
+            <!-- LANGUAGES SECTION -->
             <text x="30" y="272" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">MOST USED LANGUAGES</text>
 
             <!-- Stacked language bar -->
@@ -236,7 +234,6 @@ jobs:
           SVGEOF
 
           echo "SVG generated successfully!"
-          cat assets/stats.svg | head -5
 
       - name: Commit and push if changed
         run: |
