@@ -1,0 +1,33 @@
+  <svg width="800" height="420" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      .title { font: bold 32px Arial; fill: #ff4d8d; }
+      .label { font: 20px Arial; fill: #a8f0e6; }
+      .value { font: bold 20px Arial; fill: #ffffff; }
+    </style>
+
+    <rect width="100%" height="100%" rx="20" fill="#0f172a"/>
+
+    <text x="40" y="70" class="title">Anna Laura's GitHub Stats</text>
+
+    <text x="40" y="130" class="label">Public Repositories:</text>
+    <text x="360" y="130" class="value">42</text>
+
+    <text x="40" y="170" class="label">Followers:</text>
+    <text x="360" y="170" class="value">26</text>
+
+    <text x="40" y="210" class="label">Following:</text>
+    <text x="360" y="210" class="value">27</text>
+
+    <text x="40" y="270" class="title" font-size="26">Most Used Languages</text>
+
+    <rect x="40" y="300" width="600" height="25" rx="12" fill="#1e293b"/>
+
+    <rect x="40" y="300" width="471" height="25" rx="12" fill="#f1e05a"/>
+    <rect x="511" y="300" width="41" height="25" fill="#b07219"/>
+    <rect x="552" y="300" width="31" height="25" rx="12" fill="#3178c6"/>
+
+    <text x="40" y="350" class="label">C++</text>
+    <text x="240" y="350" class="label">Python</text>
+    <text x="440" y="350" class="label">TypeScript</text>
+  </svg>
+  EOF
