@@ -120,8 +120,7 @@ jobs:
           <svg width="600" height="420" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
               <style>
-                @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@400;600;700&amp;display=swap');
-                text { font-family: 'Space Mono', monospace; }
+                text { font-family: 'Courier New', Courier, monospace; }
               </style>
               <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
