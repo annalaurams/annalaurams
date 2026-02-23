@@ -7,8 +7,7 @@ Sou estudante do 9° período de Engenharia de Computação no Centro Federal de
 Atualmente, meus estudos estão focados em desenvolvimento de software e DevOps.
 
 <div align="center">
-  <img height="160" src="assets/stats.svg" />
-  <img height="160" src="assets/top-langs.svg" />
+  <img height="180" src="assets/stats.svg" />
 </div>
 
 <br/>

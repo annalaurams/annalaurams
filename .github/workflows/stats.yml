@@ -1,30 +1,53 @@
-name: Generate GitHub Stats
+name: Generate Custom GitHub Stats
 
 on:
   schedule:
-    - cron: "0 3 * * *" # roda todo dia às 03:00 UTC
+    - cron: "0 3 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Create assets folder
         run: mkdir -p assets
 
-      - name: Download GitHub stats
+      - name: Fetch GitHub Data
         run: |
-          curl -f -L -o assets/stats.svg "https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy"
-          curl -f -L -o assets/top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy"
-      
+          curl -s https://api.github.com/users/annalaurams > user.json
+          REPOS=$(jq .public_repos user.json)
+          FOLLOWERS=$(jq .followers user.json)
+          FOLLOWING=$(jq .following user.json)
+
+          cat <<EOF > assets/stats.svg
+          <svg width="400" height="180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="#0d1117"/>
+            <text x="20" y="40" fill="#58a6ff" font-size="22" font-family="Arial">
+              GitHub Stats - Anna Laura
+            </text>
+            <text x="20" y="80" fill="#c9d1d9" font-size="18" font-family="Arial">
+              Public Repositories: $REPOS
+            </text>
+            <text x="20" y="110" fill="#c9d1d9" font-size="18" font-family="Arial">
+              Followers: $FOLLOWERS
+            </text>
+            <text x="20" y="140" fill="#c9d1d9" font-size="18" font-family="Arial">
+              Following: $FOLLOWING
+            </text>
+          </svg>
+          EOF
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add assets/
-          git diff --quiet && git diff --staged --quiet || git commit -m "update stats"
+          git add assets/stats.svg
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore(ci): update custom stats"
           git push
