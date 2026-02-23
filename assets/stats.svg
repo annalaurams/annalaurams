@@ -1,5 +1,15 @@
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-sfo1::26wbx-1771845425795-df7720a0964f
+<svg width="400" height="180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#0d1117"/>
+  <text x="20" y="40" fill="#58a6ff" font-size="22" font-family="Arial">
+    GitHub Stats - Anna Laura
+  </text>
+  <text x="20" y="80" fill="#c9d1d9" font-size="18" font-family="Arial">
+    Public Repositories: 42
+  </text>
+  <text x="20" y="110" fill="#c9d1d9" font-size="18" font-family="Arial">
+    Followers: 26
+  </text>
+  <text x="20" y="140" fill="#c9d1d9" font-size="18" font-family="Arial">
+    Following: 27
+  </text>
+</svg>
