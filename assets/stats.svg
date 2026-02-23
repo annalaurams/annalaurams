@@ -21,47 +21,44 @@
       <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <clipPath id="barClip">
-      <rect x="30" y="290" width="540" height="18" rx="9"/>
+      <rect x="30" y="283" width="540" height="18" rx="9"/>
     </clipPath>
   </defs>
 
   <!-- Background -->
   <rect width="600" height="420" rx="16" fill="url(#cardBg)"/>
 
-  <!-- Animated border -->
+  <!-- Border -->
   <rect x="1" y="1" width="598" height="418" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" opacity="0.7"/>
 
-  <!-- ══ STATS SECTION ══ -->
-  <!-- Section label -->
+  <!-- STATS SECTION -->
   <text x="30" y="38" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">GITHUB STATS</text>
   <text x="30" y="58" font-size="20" fill="#ffffff" font-weight="700" letter-spacing="1">annalaurams</text>
 
-  <!-- Divider line -->
   <line x1="30" y1="70" x2="570" y2="70" stroke="#30363d" stroke-width="0.8"/>
 
-  <!-- Stat rows -->
   <!-- Stars -->
-  <text x="52" y="101" font-size="17" fill="#f0c040">★</text>
-  <text x="72" y="101" font-size="13" fill="#8b949e" font-weight="400">Total Stars Earned</text>
+  <text x="52" y="101" font-size="17" fill="#f0c040">&#9733;</text>
+  <text x="72" y="101" font-size="13" fill="#8b949e">Total Stars Earned</text>
   <text x="380" y="101" font-size="14" fill="#e6edf3" font-weight="700">4</text>
 
   <!-- Commits -->
-  <text x="48" y="131" font-size="14" fill="#00e5ff">⏱</text>
+  <text x="48" y="131" font-size="13" fill="#00e5ff">&#9201;</text>
   <text x="72" y="131" font-size="13" fill="#8b949e">Total Commits</text>
-  <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">268</text>
+  <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">270</text>
 
   <!-- PRs -->
-  <text x="48" y="161" font-size="14" fill="#a855f7">⑂</text>
+  <text x="48" y="161" font-size="13" fill="#a855f7">&#8487;</text>
   <text x="72" y="161" font-size="13" fill="#8b949e">Total PRs</text>
   <text x="380" y="161" font-size="14" fill="#e6edf3" font-weight="700">3</text>
 
   <!-- Issues -->
-  <text x="49" y="191" font-size="14" fill="#ff7043">⚠</text>
+  <text x="49" y="191" font-size="13" fill="#ff7043">&#9888;</text>
   <text x="72" y="191" font-size="13" fill="#8b949e">Total Issues</text>
   <text x="380" y="191" font-size="14" fill="#e6edf3" font-weight="700">3</text>
 
   <!-- Contributed to -->
-  <text x="48" y="221" font-size="14" fill="#4ade80">⬡</text>
+  <text x="48" y="221" font-size="13" fill="#4ade80">&#11042;</text>
   <text x="72" y="221" font-size="13" fill="#8b949e">Contributed to</text>
   <text x="380" y="221" font-size="14" fill="#e6edf3" font-weight="700">3 repos</text>
 
@@ -73,43 +70,43 @@
   <text x="520" y="144" text-anchor="middle" font-size="22" fill="#ffffff" font-weight="700">S+</text>
   <text x="520" y="162" text-anchor="middle" font-size="9" fill="#8b949e" letter-spacing="1">RANK</text>
 
-  <!-- ══ DIVIDER ══ -->
+  <!-- DIVIDER -->
   <line x1="0" y1="245" x2="600" y2="245" stroke="#21262d" stroke-width="1.5"/>
 
-  <!-- ══ LANGUAGES SECTION ══ -->
+  <!-- LANGUAGES SECTION -->
   <text x="30" y="272" font-size="13" fill="#ff2d78" font-weight="700" letter-spacing="2" filter="url(#softglow)">MOST USED LANGUAGES</text>
 
   <!-- Stacked language bar -->
   <rect x="30" y="283" width="540" height="18" rx="9" fill="#21262d"/>
   <g clip-path="url(#barClip)">
-    <rect x="30" y="283" width="424" height="18" fill="#f0c040"/>
-    <rect x="454" y="283" width="37" height="18" fill="#e07b39"/>
-    <rect x="491" y="283" width="28" height="18" fill="#3b82f6"/>
-    <rect x="519" y="283" width="17" height="18" fill="#8b5cf6"/>
-    <rect x="536" y="283" width="7" height="18" fill="#ef4444"/>
+    <rect x="30" y="283" width="443" height="18" fill="#f0c040"/>
+    <rect x="473" y="283" width="32" height="18" fill="#e07b39"/>
+    <rect x="505" y="283" width="30" height="18" fill="#3b82f6"/>
+    <rect x="535" y="283" width="9" height="18" fill="#8b5cf6"/>
+    <rect x="544" y="283" width="7" height="18" fill="#ef4444"/>
   </g>
 
   <!-- Language legend row 1 -->
   <circle cx="42" cy="326" r="6" fill="#f0c040"/>
   <text x="54" y="331" font-size="12" fill="#c9d1d9">C++</text>
-  <text x="54" y="345" font-size="10" fill="#8b949e">78.54%</text>
+  <text x="54" y="345" font-size="10" fill="#8b949e">82.17%</text>
 
   <circle cx="182" cy="326" r="6" fill="#e07b39"/>
   <text x="194" y="331" font-size="12" fill="#c9d1d9">Python</text>
-  <text x="194" y="345" font-size="10" fill="#8b949e">6.90%</text>
+  <text x="194" y="345" font-size="10" fill="#8b949e">6.09%</text>
 
   <circle cx="322" cy="326" r="6" fill="#3b82f6"/>
   <text x="334" y="331" font-size="12" fill="#c9d1d9">TypeScript</text>
-  <text x="334" y="345" font-size="10" fill="#8b949e">5.23%</text>
+  <text x="334" y="345" font-size="10" fill="#8b949e">5.67%</text>
 
   <circle cx="462" cy="326" r="6" fill="#8b5cf6"/>
   <text x="474" y="331" font-size="12" fill="#c9d1d9">JavaScript</text>
-  <text x="474" y="345" font-size="10" fill="#8b949e">3.32%</text>
+  <text x="474" y="345" font-size="10" fill="#8b949e">1.82%</text>
 
   <!-- Language legend row 2 -->
   <circle cx="42" cy="370" r="6" fill="#ef4444"/>
-  <text x="54" y="375" font-size="12" fill="#c9d1d9">Pascal</text>
-  <text x="54" y="389" font-size="10" fill="#8b949e">1.39%</text>
+  <text x="54" y="375" font-size="12" fill="#c9d1d9">Java</text>
+  <text x="54" y="389" font-size="10" fill="#8b949e">1.46%</text>
 
   <!-- Footer -->
   <text x="570" y="410" text-anchor="end" font-size="9" fill="#30363d">Updated automatically · github-actions</text>
