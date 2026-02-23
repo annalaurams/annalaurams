@@ -16,33 +16,82 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Create assets folder
         run: mkdir -p assets
 
-      - name: Fetch GitHub Data
+      - name: Fetch GitHub Data and Languages
         run: |
           curl -s https://api.github.com/users/annalaurams > user.json
           REPOS=$(jq .public_repos user.json)
           FOLLOWERS=$(jq .followers user.json)
           FOLLOWING=$(jq .following user.json)
 
+          curl -s https://api.github.com/users/annalaurams/repos?per_page=100 > repos.json
+
+          echo '{}' > languages_total.json
+
+          for row in $(jq -r '.[].languages_url' repos.json); do
+            curl -s $row > lang.json
+            for key in $(jq -r 'keys[]' lang.json); do
+              VALUE=$(jq -r --arg k "$key" '.[$k]' lang.json)
+              CURRENT=$(jq -r --arg k "$key" '.[$k] // 0' languages_total.json)
+              NEW=$((CURRENT + VALUE))
+              jq --arg k "$key" --argjson v $NEW '.[$k]=$v' languages_total.json > tmp.json && mv tmp.json languages_total.json
+            done
+          done
+
+          TOTAL_BYTES=$(jq '[.[]] | add' languages_total.json)
+
+          TOP_LANGS=$(jq -r 'to_entries | sort_by(-.value) | .[:3]' languages_total.json)
+
+          LANG1=$(echo $TOP_LANGS | jq -r '.[0].key')
+          LANG1_VAL=$(echo $TOP_LANGS | jq -r '.[0].value')
+          LANG2=$(echo $TOP_LANGS | jq -r '.[1].key')
+          LANG2_VAL=$(echo $TOP_LANGS | jq -r '.[1].value')
+          LANG3=$(echo $TOP_LANGS | jq -r '.[2].key')
+          LANG3_VAL=$(echo $TOP_LANGS | jq -r '.[2].value')
+
+          P1=$((LANG1_VAL * 600 / TOTAL_BYTES))
+          P2=$((LANG2_VAL * 600 / TOTAL_BYTES))
+          P3=$((LANG3_VAL * 600 / TOTAL_BYTES))
+
           cat <<EOF > assets/stats.svg
-          <svg width="400" height="180" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="#0d1117"/>
-            <text x="20" y="40" fill="#58a6ff" font-size="22" font-family="Arial">
-              GitHub Stats - Anna Laura
-            </text>
-            <text x="20" y="80" fill="#c9d1d9" font-size="18" font-family="Arial">
-              Public Repositories: $REPOS
-            </text>
-            <text x="20" y="110" fill="#c9d1d9" font-size="18" font-family="Arial">
-              Followers: $FOLLOWERS
-            </text>
-            <text x="20" y="140" fill="#c9d1d9" font-size="18" font-family="Arial">
-              Following: $FOLLOWING
-            </text>
-          </svg>
-          EOF
+<svg width="800" height="420" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font: bold 32px Arial; fill: #ff4d8d; }
+    .label { font: 20px Arial; fill: #a8f0e6; }
+    .value { font: bold 20px Arial; fill: #ffffff; }
+  </style>
+
+  <rect width="100%" height="100%" rx="20" fill="#0f172a"/>
+
+  <text x="40" y="70" class="title">Anna Laura's GitHub Stats</text>
+
+  <text x="40" y="130" class="label">Public Repositories:</text>
+  <text x="360" y="130" class="value">$REPOS</text>
+
+  <text x="40" y="170" class="label">Followers:</text>
+  <text x="360" y="170" class="value">$FOLLOWERS</text>
+
+  <text x="40" y="210" class="label">Following:</text>
+  <text x="360" y="210" class="value">$FOLLOWING</text>
+
+  <text x="40" y="270" class="title" font-size="26">Most Used Languages</text>
+
+  <rect x="40" y="300" width="600" height="25" rx="12" fill="#1e293b"/>
+
+  <rect x="40" y="300" width="$P1" height="25" rx="12" fill="#f1e05a"/>
+  <rect x="$((40 + P1))" y="300" width="$P2" height="25" fill="#b07219"/>
+  <rect x="$((40 + P1 + P2))" y="300" width="$P3" height="25" rx="12" fill="#3178c6"/>
+
+  <text x="40" y="350" class="label">$LANG1</text>
+  <text x="240" y="350" class="label">$LANG2</text>
+  <text x="440" y="350" class="label">$LANG3</text>
+</svg>
+EOF
 
       - name: Commit and push if changed
         run: |
