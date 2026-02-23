@@ -7,10 +7,8 @@ Sou estudante do 9° período de Engenharia de Computação no Centro Federal de
 Atualmente, meus estudos estão focados em desenvolvimento de software e DevOps.
 
 <div align="center">
-  <a href="https://github.com/annalaurams">
-    <img height="160" src="https://github-readme-stats.vercel.app/api?username=annalaurams&show_icons=true&include_all_commits=true&count_private=true&theme=buefy" />
-    <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&langs_count=7&theme=buefy" />
-  </a>
+  <img height="160" src="assets/stats.svg" />
+  <img height="160" src="assets/top-langs.svg" />
 </div>
 
 <br/>
