@@ -1,17 +1,31 @@
-### Olá, sou a Anna Laura
-
-#### Seja bem-vindo(a) ao meu perfil!
-
-Sou estudante do 9° período de Engenharia de Computação no Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG). Desenvolvo estudos e projetos de pesquisa principalmente nas áreas de desenvolvimento de software, DevOps e Inteligência Artificial. 
-
+# Olá! Eu sou a Anna Laura 👩‍💻
 
 <div align="center">
-  <img src="./assets/stats.svg" alt="GitHub Stats" width="500" />
+
+  
+
+  `Engenharia de Software` | `DevOps` | `Inteligência Artificial`
+
 </div>
-<br/>
 
+---
 
-<div align="center" style="display: flex; flex-wrap: wrap; gap: 8px; background-color: #1e1e1e; padding: 10px; border-radius: 8px;">
+## Sobre mim
+
+- Estudante de **Engenharia de Computação** — CEFET-MG (9° período)
+
+- Desenvolvendo projetos em **engenharia de software**, **DevOps** e **IA**
+
+- Experiência com **testes automatizados** (Jest, Cypress, Playwright)
+
+- Familiaridade com **Linux/Ubuntu**
+
+---
+
+## Tecnologias & Ferramentas
+
+<div align="center">
+
 
   <!-- Linguagens -->
   <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
@@ -46,6 +60,7 @@ Sou estudante do 9° período de Engenharia de Computação no Centro Federal de
   <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" />
   <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" />
   <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
 
   <!-- Bancos e Ferramentas de Dados -->
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />
@@ -61,16 +76,27 @@ Sou estudante do 9° período de Engenharia de Computação no Centro Federal de
 
 </div>
 
+<div align="center">
 
-### Certificações
+   <!-- [![GitHub Streak](https://streak-stats.demolab.com?user=annalaurams&theme=dark&locale=pt_BR)](https://git.io/streak-stats)-->
 
-- [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) – Emitido por **GitHub** | Junho/2025  
+[![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=annalaurams&layout=compact&theme=dark&langs_count=6)](https://github.com/anuraghazra/github-readme-stats)
+
+</div>
 
 ---
 
-### Contato
+## Certificações
+
+-  [GitHub Foundations](https://www.credly.com/badges/aae44ec8-9fe1-4922-abe5-954e1f6c2510/public_url) — Emitido por **GitHub** | Junho/2025
+
+---
+
+## Contato
+
+<div align="center">
 
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nalauramoura@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/annalaurams)
 
-
+</div>
