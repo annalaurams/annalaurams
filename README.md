@@ -4,7 +4,7 @@
 
   
 
-  `Engenharia de Software` | `DevOps` | `Inteligência Artificial`
+   `DevOps` | `SRE`
 
 </div>
 
@@ -14,11 +14,9 @@
 
 - Estudante de **Engenharia de Computação** — CEFET-MG (9° período)
 
-- Desenvolvendo projetos em **engenharia de software**, **DevOps** e **IA**
+- Desenvolvendo projetos e estudando mais sobre **DevOps** 
 
-- Experiência com **testes automatizados** (Jest, Cypress, Playwright)
-
-- Familiaridade com **Linux/Ubuntu**
+- Experiência com Controle de Qualidade e Engenharia de Software
 
 ---
 
@@ -53,6 +51,7 @@
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
   <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
+  <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" />
   
   <!-- Bibliotecas Python -->
   <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" />
