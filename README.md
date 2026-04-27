@@ -4,7 +4,7 @@
 
   
 
-   `DevOps` | `SRE`
+   `Engenharia de Software` | `DevOps`
 
 </div>
 
@@ -16,7 +16,7 @@
 
 - Desenvolvendo projetos e estudando mais sobre **DevOps** 
 
-- Experiência com Controle de Qualidade e Engenharia de Software
+- Experiência também com Inteligência Artificial, Controle de Qualidade (QA) e Engenharia de Software
 
 ---
 
