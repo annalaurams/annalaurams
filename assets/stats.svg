@@ -45,7 +45,7 @@
   <!-- Commits -->
   <text x="48" y="131" font-size="13" fill="#00e5ff">&#9201;</text>
   <text x="72" y="131" font-size="13" fill="#8b949e">Total Commits</text>
-  <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">287</text>
+  <text x="380" y="131" font-size="14" fill="#e6edf3" font-weight="700">279</text>
 
   <!-- PRs -->
   <text x="48" y="161" font-size="13" fill="#a855f7">&#8487;</text>
@@ -55,7 +55,7 @@
   <!-- Issues -->
   <text x="49" y="191" font-size="13" fill="#ff7043">&#9888;</text>
   <text x="72" y="191" font-size="13" fill="#8b949e">Total Issues</text>
-  <text x="380" y="191" font-size="14" fill="#e6edf3" font-weight="700">3</text>
+  <text x="380" y="191" font-size="14" fill="#e6edf3" font-weight="700">0</text>
 
   <!-- Contributed to -->
   <text x="48" y="221" font-size="13" fill="#4ade80">&#11042;</text>
