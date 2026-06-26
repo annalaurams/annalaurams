@@ -4,7 +4,7 @@
 
   
 
-   `Engenharia de Software` | `DevOps`
+   `Engenharia de Software` | `DevOps` | `Dados`
 
 </div>
 
@@ -14,9 +14,8 @@
 
 - Estudante de **Engenharia de Computação** — CEFET-MG (9° período)
 
-- Desenvolvendo projetos e estudando mais sobre **DevOps** 
 
-- Experiência também com Inteligência Artificial, Controle de Qualidade (QA) e Engenharia de Software
+- Experiência também com Inteligência Artificial e Controle de Qualidade (QA) 
 
 ---
 
