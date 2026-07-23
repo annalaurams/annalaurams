@@ -4,7 +4,7 @@
 
   
 
-   `Engenharia de Software` | `DevOps` | `Dados`
+   `Engenharia de Software` | `Desenvolvimento` | `Dados`
 
 </div>
 
