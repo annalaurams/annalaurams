@@ -4,18 +4,12 @@
 
   
 
-   `Engenharia de Software` | `Desenvolvimento` | `Dados`
+   `Engenharia de Software` |  `Engenharia de Dados`
 
 </div>
 
----
-
-## Sobre mim
 
 - Estudante de **Engenharia de Computação** — CEFET-MG (9° período)
-
-
-- Experiência também com Inteligência Artificial e Controle de Qualidade (QA) 
 
 ---
 
